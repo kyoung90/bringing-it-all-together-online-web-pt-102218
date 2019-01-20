@@ -50,12 +50,12 @@ class Dog
       rows = DB[:conn].execute("SELECT * FROM dogs WHERE name=?", name)
       binding.pry
       if rows.count > 1
-        
+
       elsif rows.count == 1
 
       else
 
-      end 
+      end
   end
 
   def self.new_from_db(row)
