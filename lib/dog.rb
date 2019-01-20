@@ -47,8 +47,15 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-      DB[:conn].execute("SELECT * FROM dogs WHERE name=? LIMIT 1", name)
+      rows = DB[:conn].execute("SELECT * FROM dogs WHERE name=?", name)
+      binding.pry
+      if rows.count > 1
+        
+      elsif rows.count == 1
 
+      else
+
+      end 
   end
 
   def self.new_from_db(row)
