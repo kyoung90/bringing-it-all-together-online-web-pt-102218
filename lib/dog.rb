@@ -25,9 +25,9 @@ class Dog
 
   def save 
     if @id 
-
+      DB[:conn].execute("UPDATE dogs SET name=?, breed=? WHERE id=?", self.name, self.breed, self.id)
     else 
-      
+      DB[:conn].execute("INSERT INTO dogs (name, breed) VALUES (?, ?)", self.name, self.breed)
     end
   end 
 
