@@ -53,6 +53,8 @@ class Dog
           row = rows[0]
           if row
             dog = self.new_from_db(row)
+          else
+            dog = self.create(name: name, breed: breed)
           end 
       elsif rows.count == 1
         row = rows[0]
