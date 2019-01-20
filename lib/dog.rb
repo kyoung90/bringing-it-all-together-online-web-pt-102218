@@ -48,11 +48,11 @@ class Dog
 
   def self.find_or_create_by(name:, breed:)
       rows = DB[:conn].execute("SELECT * FROM dogs WHERE name=?", name)
-      binding.pry
       if rows.count > 1
-
+        
       elsif rows.count == 1
-
+        row = rows[0]
+        dog = self.new_from_db(row)
       else
 
       end
