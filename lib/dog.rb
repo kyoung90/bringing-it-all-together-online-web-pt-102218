@@ -42,20 +42,20 @@ class Dog
   def self.find_by_id(id)
       row = DB[:conn].execute("SELECT * FROM dogs WHERE id=?", id)[0]
       if row
-        dog = self.new_from_db
+        dog = self.new_from_db(row)
       end
   end
 
   def self.find_or_create_by(name:, breed:)
       DB[:conn].execute("SELECT * FROM dogs WHERE name=? LIMIT 1", name)
-      
-  end 
+
+  end
 
   def self.new_from_db(row)
     id = row[0]
     name = row[1]
     breed = row[2]
     dog = self.new(id: id, name: name, breed: breed)
-  end 
+  end
 
 end
