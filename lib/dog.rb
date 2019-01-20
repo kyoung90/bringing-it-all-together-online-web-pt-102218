@@ -49,7 +49,7 @@ class Dog
   def self.find_or_create_by(name:, breed:)
       rows = DB[:conn].execute("SELECT * FROM dogs WHERE name=?", name)
       if rows.count > 1
-          rows = DB[:conn].execute("SELECT * FROM dogs WHERE name=?, breed=?", name, breed)
+          rows = DB[:conn].execute("SELECT * FROM dogs WHERE name=?,breed=?", name, breed)
           row = rows[0]
           dog = self.new_from_db(row)
       elsif rows.count == 1
